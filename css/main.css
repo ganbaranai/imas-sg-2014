@@ -1,0 +1,115 @@
+/* TOKYO */
+@font-face {
+    font-family: Helvo;
+    src: url(../font/HELVETICALTSTD-BOLD.woff);
+}
+
+#content {
+	width: 1280;
+	height: 720;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+a:hover { 
+    color: #aaa;
+}
+
+a:active { 
+    color: #aaa;
+}
+
+#full-screen-background-image {
+  position: relative;
+  z-index: -999;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+}
+
+#wrapper {
+  position: relative;
+  width: 800px;
+  min-height: 400px;
+  margin: 100px auto;
+  color: #333;
+}
+
+blockquote {
+	margin: 0px;
+	margin-left:40px;
+}
+
+
+.copyright {
+	position: relative;
+	top: 10px;
+    right: 10px;
+	font-size: 8;
+    font-family: Helvo;
+    text-align: right;
+}
+
+.marginalize {
+	margin-top: 3px;
+}
+
+.head {
+	font-size: 2 em;
+    font-family: Helvo;
+}
+
+#header {
+	text-align: left;
+	position: absolute;
+	top:20px;
+	left:20px;
+	font-size: 60;
+    font-family: Helvo;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: -3px;
+}
+
+#headertwo {
+	text-align: left;
+	position: absolute;
+	top:20px;
+	left:325px;
+	font-size: 60;
+    font-family: Helvo;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: -3px;
+}
+
+#headerthree {
+	text-align: left;
+	position: absolute;
+	top:20px;
+	left:375px;
+	font-size: 60;
+    font-family: Helvo;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: -3px;
+}
+
+#secondline {
+	text-align: left;
+	position: absolute;
+	top:85px;
+	left:30px;
+	font-size: 20;
+    font-family: Helvo;
+	}
+/* O-MO-TE-NA-SHI */
+
