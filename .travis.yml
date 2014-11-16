@@ -1,0 +1,12 @@
+language: ruby
+env:
+  global:
+    secure: Cm+AqICTP8UPb3gbhdW4qOHDRnbwspRbcAFsET/aAs7i6oWKMMiHfURJsJX4QtAjZnxtRyOUYZurCTzwp1PtjlzV1In8uSxLHTSaUU1B07hqjzua1SvJWYOYECGJFBX+dl8Oi+itozf64wGFf9E4wuaLoJ1Bm9XlTT9U5LAqeUs=
+before_install:
+- openssl aes-256-cbc -K $encrypted_2694e5dddf61_key -iv $encrypted_2694e5dddf61_iv
+  -in deploy.sh.enc -out deploy.sh -d
+- openssl aes-256-cbc -K $encrypted_2694e5dddf61_key -iv $encrypted_2694e5dddf61_iv
+  -in deploy-key.enc -out deploy-key -d
+
+script:
+- sh deploy.sh
