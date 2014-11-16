@@ -5,7 +5,5 @@ env:
 before_install:
 - openssl aes-256-cbc -K $encrypted_2694e5dddf61_key -iv $encrypted_2694e5dddf61_iv
   -in deploy-key.enc -out deploy-key -d
-- openssl aes-256-cbc -K $encrypted_2694e5dddf61_key -iv $encrypted_2694e5dddf61_iv
-  -in deploy.sh.enc -out deploy.sh -d
 script:
 - sh deploy.sh
