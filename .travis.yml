@@ -1,4 +1,7 @@
 language: ruby
+branches:
+  only:
+    - gh-pages
 env:
   global:
     secure: Cm+AqICTP8UPb3gbhdW4qOHDRnbwspRbcAFsET/aAs7i6oWKMMiHfURJsJX4QtAjZnxtRyOUYZurCTzwp1PtjlzV1In8uSxLHTSaUU1B07hqjzua1SvJWYOYECGJFBX+dl8Oi+itozf64wGFf9E4wuaLoJ1Bm9XlTT9U5LAqeUs=
