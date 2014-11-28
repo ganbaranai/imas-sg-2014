@@ -159,14 +159,15 @@ function positionTabs(e) {
     {
       theImage.css('position', 'fixed');
       theImage.css('top', y - theImage.space);
-      theImage.css('left', 8 + 'px');
+      theImage.css('left', 0 + 'px');
       //theImage.offset({ top: scrollBottom - theImage.space });
     }
     else
     {
-      theImage.css('position', 'relative');
+      theImage.css('position', 'absolute');
+      theImage.css('top', theImage.topPos + 'px');
       theImage.css('left', 0 + 'px');
-      theImage.offset({ top: theImage.topPos });
+      //theImage.offset({ top: theImage.topPos });
     }
   }
 }
