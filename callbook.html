@@ -35,12 +35,14 @@
 <script type="text/javascript">
 
 var images = [
-  "images/theidolmaster.jpg",
-  "images/ready.jpg",
-  "images/onegaicinderella.jpg",
-  "images/masterpiece.jpg",
-  "images/thankyou.jpg"
+  {src:"images/theidolmaster.jpg"},
+  {src:"images/ready.jpg"},
+  {src:"images/thankyou.jpg"},
+  {src:"images/onegaicinderella.jpg"},
+  {src:"images/masterpiece.jpg"}
 ];
+
+var previewSpace = 20;
 
 var imageRatios = {length: 0};
 
@@ -52,8 +54,9 @@ for (i=0; i<images.length; i++)
   var img = new Image();
   img.idx = i;
   img.onload = function() {
-    imageRatios[images[this.idx]] = {
+    imageRatios[images[this.idx].src] = {
       ratio: this.height / this.width,
+      height: this.height,
       image: $(this)
     }
     imageRatios.length++;
@@ -61,9 +64,10 @@ for (i=0; i<images.length; i++)
     target.empty();
     for (var j=0; j<images.length; j++)
     {
-      if (imageRatios[images[j]])
+      if (imageRatios[images[j].src])
       {
-        target.append( imageRatios[images[j]].image );
+        var theImage = imageRatios[images[j].src].image;
+        target.append( theImage );
       }
     }
 
@@ -74,7 +78,7 @@ for (i=0; i<images.length; i++)
 
 
   };
-  img.src = images[i];
+  img.src = images[i].src;
 }
 
 function resizeImages(event) {
@@ -85,12 +89,56 @@ function resizeImages(event) {
 
     for (i=0; i<images.length; i++)
     {
-      imageRatios[images[i]].image.css('width', (width - 20) +'px');
-      imageRatios[images[i]].image.css('height','auto');
+      var theImage = imageRatios[images[i].src].image;
+
+      var newWidth = (width - 20);
+      var newHeight = (width - 20) * imageRatios[images[i].src].ratio;
+
+      theImage.css('width', newWidth +'px');
+      theImage.css('height', newHeight +'px');
+
+      imageRatios[images[i].src].height = newHeight;
+
+      var totalImageSize = 0;
+      var j=0;
+      for (j=0; j<i; j++)
+      {
+        totalImageSize += imageRatios[images[j].src].height;
+      }
+      theImage.topPos = totalImageSize + 10;
+      theImage.space = (images.length - i) * previewSpace;
+    }
+
+    positionTabs(event);
+  }
+};
+
+function positionTabs(e) {
+
+  for (i=0; i<images.length; i++)
+  {
+    var theImage = imageRatios[images[i].src].image;
+
+    var w = window,
+        d = document,
+        e = d.documentElement,
+        g = d.getElementsByTagName('body')[0],
+        y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+    var scrollBottom = $(window).scrollTop() + y;
+    if (scrollBottom - theImage.space < theImage.topPos)
+    {
+      theImage.offset({ top: scrollBottom - theImage.space });
+    }
+    else
+    {
+      theImage.offset({ top: theImage.topPos });
     }
   }
+}
 
-};
+
+$(window).on("scroll", positionTabs);
 
 window.onresize = resizeImages;
 
